@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { Upload, Button } from 'antd';
+// import "antd/dist/antd.css"
 
-function App() {
+
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div 
+     style={{
+      display: "flex",
+      justifyContent: "center",
+      alignIteams: "center",
+      height: "300px",
+      width:"200px",
+      margin: "150px"
+     }}
+     >
+      <Upload.Dragger multiple
+      listType= "picture"
+       action={'http://localhost:3000/'}
+       showUploadList={{ showRemoveIcon: false,
+      showUploadList:false }}
+      accept=".png,.jpeg,.doc"
+      beforeUpload={(file) => {
+        if (file.size >= 5000) alert('low size upload plz')
+        // console.log( { file } );
+        return false;
+      }}
+       >
+        Drag files here OR
+        <br />
+       <Button>Click Upload</Button>
+      </Upload.Dragger>
+      
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
